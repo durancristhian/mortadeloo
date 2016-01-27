@@ -24,6 +24,7 @@
         "max-params"                 : [ 1, 4 ],
         "new-parens"                 : 2,
         "no-class-assign"            : 2,
+        "no-console"                 : 0,
         "no-const-assign"            : 2,
         "no-dupe-class-members"      : 2,
         "no-else-return"             : 2,
