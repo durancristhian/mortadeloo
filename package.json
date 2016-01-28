@@ -2,23 +2,17 @@
   "name": "mortadeloo",
   "version": "0.1.0",
   "description": "mortadeloo app",
-  "main": "dist/server/index.js",
   "scripts": {
     "babel-node": "babel-node",
     "prebuild": "de public/**/*.* && npm run lint",
-    "build": "npm run build-css && npm run build-js && npm run copy-images && npm run build-server",
-    "build-css": "copyfiles -u 2 src/client/css/**/*.css public",
-    "build-js": "copyfiles -u 2 src/client/js/**/*.js public",
-    "build-server": "npm run compile-server && npm run copy-views",
-    "compile-server": "babel src/server --out-dir dist/server",
-    "copy-images": "copyfiles -u 2 src/client/img/*.* public",
-    "copy-views": "copyfiles -u 2 src/server/views/**/*.handlebars dist/server",
+    "build": "npm run build-css && npm run build-images && npm run build-js",
+    "build-css": "copyfiles -u 1 client/css/**/*.css public",
+    "build-images": "copyfiles -u 1 client/img/*.* public",
+    "build-js": "copyfiles -u 1 client/js/**/*.js public",
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
-    "server": "nodemon --exec npm run babel-node -- src/server/index",
-    "start": "node dist/server/index",
-    "start-dev": "npm run lint && npm run server"
+    "start": "nodemon --exec npm run babel-node -- server/index"
   },
   "author": "Duran Cristhian (@durancristhian)",
   "license": "MIT",
@@ -50,7 +44,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint && npm run build"
+      "pre-commit": "npm run lint"
     }
   }
 }

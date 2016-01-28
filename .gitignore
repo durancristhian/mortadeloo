@@ -3,5 +3,4 @@
 *.log
 eslint.html
 node_modules
-dist
 public
