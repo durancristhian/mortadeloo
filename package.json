@@ -8,7 +8,7 @@
     "build": "npm run build-css && npm run build-images && npm run build-js",
     "build-css": "copyfiles -u 1 client/css/**/*.css public",
     "build-images": "copyfiles -u 1 client/img/*.* public",
-    "build-js": "browserify -t [ babelify --presets [ es2015 ] ] client/js/main.js -o public/js/app.js",
+    "build-js": "set NODE_PATH=.&& browserify -t [ babelify --presets [ es2015 ] ] client/js/main.js -o public/js/app.js",
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
