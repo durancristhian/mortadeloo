@@ -3,9 +3,15 @@ import express from "express";
 import request from "request";
 
 const router = express.Router();
+const options = {
+    url : "http://www.dejugadas.com/quinielas/datospizarra.php",
+    form: {
+        fecha: "2016/001/27"
+    }
+};
 
 router.get("/results", (req, res) => {
-    request("http://www.dejugadas.com/quinielas/datospizarra.php", (error, response, body) => {
+    request.post(options, (error, response, body) => {
         if (!error && response.statusCode === 200) {
             let $ = cheerio.load(body, { normalizeWhitespace: true });
             let results = {
