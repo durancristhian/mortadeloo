@@ -50,11 +50,11 @@ app.use(express.static("public"));
 
 import apiController from "./api";
 import appController from "./routes/app";
-import loginController from "./routes/login";
+import homeController from "./routes/home";
 import logoutController from "./routes/logout";
 import twitterController from "./routes/auth/twitter";
 
-app.use("/", loginController);
+app.use("/", homeController);
 app.use("/api", apiController);
 app.use("/app", appController);
 app.use("/auth/twitter", twitterController);
