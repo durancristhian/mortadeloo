@@ -1,14 +1,15 @@
 import cheerio from "cheerio";
 import express from "express";
+import moment from "moment";
 import request from "request";
 
-const router = express.Router();
 const options = {
     url : "http://www.dejugadas.com/quinielas/datospizarra.php",
     form: {
-        fecha: "2016/001/27"
+        fecha: moment().format('YYYY/MM/DD')
     }
 };
+const router = express.Router();
 
 router.get("/results", (req, res) => {
     request.post(options, (error, response, body) => {

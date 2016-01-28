@@ -36,6 +36,7 @@
     "ghooks": "1.0.3",
     "helmet": "1.1.0",
     "jquery": "2.2.0",
+    "moment": "2.11.1",
     "mongoose": "4.3.7",
     "mongoose-findorcreate": "0.1.2",
     "passport": "0.3.2",
