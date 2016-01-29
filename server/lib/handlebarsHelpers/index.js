@@ -1,12 +1,29 @@
 import moment from "moment";
+import os from "os";
 
-export function formatDate(date) {
+moment.locale("es", {
+    months: [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre"
+    ]
+});
 
-    const format = "DD/MM/YYYY";
+export function formatDate(date, format) {
+    const ensuredDate = date || new Date();
 
-    if (!date) {
-        return moment.utc().format(format);
-    }
+    return moment.utc(ensuredDate).format(format);
+}
 
-    return moment.utc(date).format(format);
+export function platformInformation() {
+    return os.platform();
 }

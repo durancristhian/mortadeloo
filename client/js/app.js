@@ -2,7 +2,7 @@ import $ from "jquery";
 import { getResults } from "./api";
 
 getResults(results => {
-    $("#spinner").addClass("hide");
+    $("#loading").addClass("hide");
     $("#nacional-primera").html(results.nacional.laPrimera);
     $("#nacional-matutina").html(results.nacional.matutina);
     $("#nacional-vespertina").html(results.nacional.vespertina);
