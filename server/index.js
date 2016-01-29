@@ -22,9 +22,12 @@ const app = express();
 const port = process.env.PORT;
 const server = http.createServer(app);
 
+import * as handlebarsHelpers from "./lib/handlebarsHelpers";
+
 app.engine("handlebars", expressHandlebars({
     defaultLayout: "main",
-    layoutsDir   : path.join(__dirname, "views", "layouts")
+    layoutsDir   : path.join(__dirname, "views", "layouts"),
+    helpers      : handlebarsHelpers
 }));
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
@@ -67,7 +70,7 @@ mongoose.connection.on("error", (error) => {
     process.exit(1);
 });
 
-mongoose.connection.on("connected", () => { 
+mongoose.connection.on("connected", () => {
     logger.info(process.env.DB);
     server.listen(port, () => logger.info(`http://localhost:${port}`));
 });
