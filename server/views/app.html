@@ -1,3 +1,7 @@
-<div class="container px2 py4">
-    <p class="m0">Bienvenido, <strong class="italic"> {{user.profile.username}}</strong></p>
+<div class="container mb3 mt4 px2">
+    <div class="clearfix">
+        {{#times 100}}
+            {{> toggle number=this}}
+        {{/times}}
+    </div>
 </div>

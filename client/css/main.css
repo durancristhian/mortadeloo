@@ -1,3 +1,11 @@
+a:hover {
+    text-decoration: none;
+}
+
+.font-size-0 {
+    font-size: 0;
+}
+
 .spinner {
     text-align: center;
 }
@@ -39,6 +47,11 @@
         -webkit-transform: scale(1.0);
         transform: scale(1.0);
     }
+}
+
+.thumbnail {
+    height: 30px;
+    width: 30px;
 }
 
 .text-shadow {

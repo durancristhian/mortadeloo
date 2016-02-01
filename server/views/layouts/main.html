@@ -10,21 +10,27 @@
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body style="min-width: 480px;">
-    <div class="bg-darken-1 border-bottom p2">
+    <div class="bg-darken-2 border-bottom p2">
         <div class="clearfix container">
-            <div class="col col-6">
+            <div class="col col-5">
                 <h1 class="m0">Mortadeloo</h1>
             </div>
-            <div class="col col-6 right-align">
+            <div class="col col-7 right-align">
                 {{#if isAuthenticated}}
-                    <a href="/logout" class="align-middle bg-red border btn caps h4 inline-block ml2 rounded text-shadow white" style="margin-top: 2px;">Salir</a>
+                    <div class="font-size-0">
+                        <a href="https://twitter.com/{{user.profile.username}}" class="align-middle inline-block" target="_blank" style="margin-top: 4px;">
+                            <img src="{{user.profile._json.profile_image_url}}" alt="{{user.profile.username}}'s profile picture" class="align-middle border inline-block mr1 rounded thumbnail">
+                            <span class="align-middle black h5 inline-block italic mb0">{{user.profile.displayName}}</span>
+                        </a>
+                        <a href="/logout" class="align-middle bg-red border btn caps h5 inline-block ml2 rounded text-shadow white" style="margin-top: 2px;">Salir</a>
+                    </div>
                 {{else}}
-                    <a href="/auth/twitter" class="align-middle bg-aqua border btn caps h4 inline-block ml2 rounded text-shadow white" style="margin-top: 2px;">Twitter</a>
+                    <a href="/auth/twitter" class="align-middle bg-aqua border btn caps h5 inline-block rounded text-shadow white" style="margin-top: 2px;">Twitter</a>
                 {{/if}}
             </div>
         </div>
     </div>
-    <div class="bg-darken-2 border-bottom center p1">
+    <div class="bg-darken-1 border-bottom center p1">
         <p class="m0">El servidor está corriendo sobre <span class="bold italic">{{platformInformation}}</span></p>
     </div>
     {{{body}}}

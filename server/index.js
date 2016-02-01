@@ -28,7 +28,8 @@ const handlebars = expressHandlebars.create({
     extname      : "html",
     defaultLayout: "main",
     helpers      : handlebarsHelpers,
-    layoutsDir   : path.join(__dirname, "views", "layouts")
+    layoutsDir   : path.join(__dirname, "views", "layouts"),
+    partialsDir  : path.join(__dirname, "views", "partials")
 });
 
 app.engine("html", handlebars.engine);
