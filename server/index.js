@@ -24,12 +24,15 @@ const server = http.createServer(app);
 
 import * as handlebarsHelpers from "./lib/handlebarsHelpers";
 
-app.engine("handlebars", expressHandlebars({
+const handlebars = expressHandlebars.create({
+    extname      : "html",
     defaultLayout: "main",
-    layoutsDir   : path.join(__dirname, "views", "layouts"),
-    helpers      : handlebarsHelpers
-}));
-app.set("view engine", "handlebars");
+    helpers      : handlebarsHelpers,
+    layoutsDir   : path.join(__dirname, "views", "layouts")
+});
+
+app.engine("html", handlebars.engine);
+app.set("view engine", "html");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(helmet());

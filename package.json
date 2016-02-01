@@ -12,7 +12,8 @@
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run lint && npm run build",
-    "start": "babel-node server/index"
+    "start": "babel-node server/index",
+    "start-dev": "nodemon --watch server/**/*.js --exec npm run start"
   },
   "author": "Duran Cristhian (@durancristhian)",
   "license": "MIT",
@@ -39,6 +40,7 @@
     "moment": "2.11.1",
     "mongoose": "4.3.7",
     "mongoose-findorcreate": "0.1.2",
+    "nodemon": "1.8.1",
     "passport": "0.3.2",
     "passport-twitter": "1.0.3",
     "request": "2.67.0",
