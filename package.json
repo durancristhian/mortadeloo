@@ -4,7 +4,7 @@
   "description": "mortadeloo app",
   "scripts": {
     "prebuild": "de public/**/*.*",
-    "build": "npm run build-css && npm run build-images && npm run build-js",
+    "build": "npm run build-css & npm run build-images & npm run build-js",
     "build-css": "copyfiles -u 1 client/css/**/*.css public",
     "build-images": "copyfiles -u 1 client/img/*.* public",
     "prebuild-js": "copyfiles -u 1 client/js/app.js public",
