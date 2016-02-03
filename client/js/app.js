@@ -1,7 +1,9 @@
 import $ from "jquery";
+import { toggleActive } from "./toggle";
 import { getResults } from "./api";
+import { currentRoute } from "./currentRoute";
 
-if (window.location.pathname === "/") {
+if (currentRoute === "/") {
     getResults(results => {
         $("#loading").addClass("hide");
         $("#nacional-primera").html(results.nacional.laPrimera);
@@ -14,11 +16,6 @@ if (window.location.pathname === "/") {
         $("#provincia-primera").html(results.provincia.laPrimera);
         $("#table").removeClass("hide");
     });
-} else {
-    $(".js-toggle").on("click", (event) => {
-
-        event.preventDefault();
-
-        $(event.target).toggleClass("toggle-active");
-    });
+} else if (currentRoute === "/app") {
+    toggleActive(".js-toggle");
 }
