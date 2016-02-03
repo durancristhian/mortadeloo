@@ -7,6 +7,7 @@
     "build": "npm run build-css & npm run build-images & npm run build-js",
     "build-css": "copyfiles -u 1 client/css/**/*.css public",
     "build-images": "copyfiles -u 1 client/img/*.* public",
+    "get-dreams": "babel-node server/scripts/dreams",
     "prebuild-js": "copyfiles -u 1 client/js/app.js public",
     "build-js": "browserify -d -t [ babelify --presets [ es2015 ] ] client/js/app.js | exorcist public/js/app.map.js > public/js/app.js",
     "lint": "eslint **/*.js",
