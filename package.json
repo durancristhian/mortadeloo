@@ -11,7 +11,7 @@
     "build-js": "browserify -d -t [ babelify --presets [ es2015 ] ] client/js/app.js | exorcist public/js/app.map.js > public/js/app.js",
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
-    "postinstall": "npm run lint && npm run build",
+    "postinstall": "npm run build",
     "start": "babel-node server/index",
     "start-dev": "nodemon --watch server/**/*.js --exec npm run start"
   },
@@ -50,5 +50,8 @@
     "ghooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "devDependencies": {
+    "escope": "3.3.0"
   }
 }
