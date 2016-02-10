@@ -16,27 +16,24 @@ request.get(options, (error, response, body) => {
             normalizeWhitespace: true,
             decodeEntities     : true
         });
-        let results = [];
+        let results = {
+            dreams: []
+        };
 
         for (let i = 0; i < 25; i++) {
-            results.push($("tr").eq(i).children().eq(1).text());
-            results.push($("tr").eq(i).children().eq(3).text());
-            results.push($("tr").eq(i).children().eq(5).text());
-            results.push($("tr").eq(i).children().eq(7).text());
+            results.dreams.push($("tr").eq(i).children().eq(1).text());
+            results.dreams.push($("tr").eq(i).children().eq(3).text());
+            results.dreams.push($("tr").eq(i).children().eq(5).text());
+            results.dreams.push($("tr").eq(i).children().eq(7).text());
         }
 
         if (!fs.existsSync(resourcesDir)) {
             fs.mkdirSync(resourcesDir);
         }
-
-        fs.writeFile(dreamsFile, results, "binary", err => {
+        fs.writeFile(dreamsFile, JSON.stringify(results), "binary", err => {
             if (err) {
                 return console.log(err);
             }
-        });
-
-        fs.readFile(dreamsFile, "binary", (err, data) => {
-            console.log(data);
         });
     } else {
         console.log(error);

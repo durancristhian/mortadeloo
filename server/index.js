@@ -51,6 +51,9 @@ app.use(passport.session());
 import authentication from "./authentication";
 authentication();
 
+import dreams from "./lib/dreams";
+app.use(dreams);
+
 import locals from "./middlewares/locals";
 app.use(locals);
 

@@ -24,6 +24,10 @@ export function formatDate(date, format) {
     return moment.utc(ensuredDate).format(format);
 }
 
+export function getDream(data, number) {
+    return data.dreams[number];
+}
+
 export function pad(number) {
     return (number < 10) ? ("0" + number) : number;
 }
