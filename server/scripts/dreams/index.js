@@ -4,15 +4,18 @@ import path from "path";
 import request from "request";
 
 const dreamsFile = path.join("server", "resources", "dreams.json");
-const resourcesDir = path.join("server", "resources");
 const options = {
     url     : "http://mundodesuenos.com/tabla_numeros.php",
     encoding: "binary"
 };
+const resourcesDir = path.join("server", "resources");
 
 request.get(options, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-        let $ = cheerio.load(body, { normalizeWhitespace: true, decodeEntities: true });
+        let $ = cheerio.load(body, {
+            normalizeWhitespace: true,
+            decodeEntities     : true
+        });
         let results = [];
 
         for (let i = 0; i < 25; i++) {
@@ -27,8 +30,11 @@ request.get(options, (error, response, body) => {
         }
 
         fs.writeFile(dreamsFile, results, "binary", err => {
-            if (err) { return console.log(err); }
+            if (err) {
+                return console.log(err);
+            }
         });
+
         fs.readFile(dreamsFile, "binary", (err, data) => {
             console.log(data);
         });
