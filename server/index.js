@@ -10,6 +10,7 @@ import logger from "./lib/logger";
 import mongoose from "mongoose";
 import passport from "passport";
 import path from "path";
+import realtime from "./realtime";
 
 if (!process.env.NODE_ENV) {
     dotenv.load({
@@ -77,4 +78,5 @@ mongoose.connection.on("error", (error) => {
 mongoose.connection.on("connected", () => {
     logger.info(process.env.DB);
     server.listen(port, () => logger.info(`http://localhost:${port}`));
+    realtime(server);
 });
