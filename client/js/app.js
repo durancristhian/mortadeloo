@@ -17,5 +17,5 @@ if (currentRoute === "/") {
         $("#table").removeClass("hide");
     });
 } else if (currentRoute === "/app") {
-    toggleActive(".js-toggle");
+    toggleActive("#toggles");
 }
