@@ -14,7 +14,7 @@
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
     "start": "babel-node server/index",
-    "start-dev": "nodemon -x 'npm run start' -w server"
+    "start-dev": "nodemon -x npm run start -w server"
   },
   "engines": {
     "node": ">= 5.0.0"
