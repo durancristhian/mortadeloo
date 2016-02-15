@@ -40,11 +40,14 @@ app.set("views", path.join(__dirname, "views"));
 app.use(helmet());
 app.use(compression());
 app.use(cookieParser());
-app.use(expressSession({
+
+const session = expressSession({
     secret           : process.env.SESSION_SECRET,
-    resave           : false,
-    saveUninitialized: false
-}));
+    resave           : true,
+    saveUninitialized: true
+});
+
+app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -81,5 +84,5 @@ mongoose.connection.on("error", (error) => {
 mongoose.connection.on("connected", () => {
     logger.info(process.env.DB);
     server.listen(port, () => logger.info(`http://localhost:${port}`));
-    realtime(server);
+    realtime(server, session);
 });

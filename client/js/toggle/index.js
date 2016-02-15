@@ -15,6 +15,10 @@ function numberClick(event) {
 export function toggleActive(selector) {
     $(selector).on("click", "a", numberClick);
 
+    socket.on("follow-number-error", (err) => {
+        console.log(err);
+    });
+
     socket.on("follow-number-ok", result => {
         console.log(result);
     });
