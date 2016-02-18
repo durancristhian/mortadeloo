@@ -9,17 +9,20 @@ function numberClick(event) {
     let element = $(event.target);
     element.toggleClass("toggle-active");
 
-    socket.emit("follow-number", element.data("number"));
+    if (element.hasClass("toggle-active")) {
+        socket.emit("follow-number", parseInt(element.data("number")));
+    } else {
+        socket.emit("unfollow-number", parseInt(element.data("number")));
+    }
 }
 
 export function toggleActive(selector) {
     $(selector).on("click", "a", numberClick);
 
-    socket.on("follow-number-error", (err) => {
+    socket.on("follow-number-ok", result => console.log(result));
+    socket.on("number-error", err => {
         console.log(err);
+        location.result();
     });
-
-    socket.on("follow-number-ok", result => {
-        console.log(result);
-    });
+    socket.on("unfollow-number-ok", result => console.log(result));
 }

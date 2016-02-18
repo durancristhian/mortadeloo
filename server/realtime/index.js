@@ -8,12 +8,13 @@ export default function (server, session) {
     io.use(sharedsession(session));
 
     io.on("connection", (socket) => {
+
         socket.on("follow-number", number => {
             User.findByIdAndUpdate(
                 socket.handshake.session.passport.user,
                 {
                     $push: {
-                        numbers: number
+                        numbers: parseInt(number)
                     }
                 },
                 {
@@ -22,11 +23,40 @@ export default function (server, session) {
                 },
                 (err, doc) => {
                     if (err) {
-                        socket.emit("follow-number-error", err);
+                        socket.emit("number-error", err);
                         return;
                     }
 
-                    socket.emit("follow-number-ok", { doc });
+                    socket.emit("follow-number-ok", {
+                        doc: doc,
+                        ok : true
+                    });
+                }
+            );
+        });
+
+        socket.on("unfollow-number", number => {
+            User.findByIdAndUpdate(
+                socket.handshake.session.passport.user,
+                {
+                    $pull: {
+                        numbers: parseInt(number)
+                    }
+                },
+                {
+                    safe  : true,
+                    upsert: true
+                },
+                (err, doc) => {
+                    if (err) {
+                        socket.emit("number-error", err);
+                        return;
+                    }
+
+                    socket.emit("unfollow-number-ok", {
+                        doc: doc,
+                        ok : true
+                    });
                 }
             );
         });

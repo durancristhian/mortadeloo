@@ -30,6 +30,7 @@ request.get(options, (error, response, body) => {
         if (!fs.existsSync(resourcesDir)) {
             fs.mkdirSync(resourcesDir);
         }
+
         fs.writeFile(dreamsFile, JSON.stringify(results), "binary", err => {
             if (err) {
                 return console.log(err);

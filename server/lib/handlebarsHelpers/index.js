@@ -24,6 +24,10 @@ export function formatDate(date, format) {
     return moment.utc(ensuredDate).format(format);
 }
 
+export function getClassIfActive(numbers, number) {
+    return numbers.indexOf(number) !== -1 ? "toggle-active" : "";
+}
+
 export function getDream(data, number) {
     return data.dreams[number];
 }

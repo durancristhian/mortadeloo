@@ -1,5 +1,5 @@
-import isntAuthenticated from "../../middlewares/isntAuthenticated";
 import express from "express";
+import isntAuthenticated from "../../middlewares/isntAuthenticated";
 
 const router = express.Router();
 
