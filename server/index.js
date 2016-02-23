@@ -23,7 +23,7 @@ const app = express();
 const port = process.env.PORT;
 const server = http.createServer(app);
 
-import * as handlebarsHelpers from "./lib/handlebarsHelpers";
+import * as handlebarsHelpers from "./lib/handlebars-helpers";
 
 const handlebars = expressHandlebars.create({
     extname      : "html",
