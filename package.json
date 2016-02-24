@@ -13,7 +13,7 @@
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
-    "start": "babel-node server/index",
+    "start": "babel-node server",
     "start-dev": "nodemon -x npm run start -w server"
   },
   "engines": {
@@ -22,6 +22,7 @@
   "author": "Duran Cristhian (@durancristhian)",
   "license": "MIT",
   "dependencies": {
+    "async": "1.5.2",
     "babel-cli": "6.4.5",
     "babel-eslint": "5.0.0-beta6",
     "babel-preset-es2015": "6.3.13",
@@ -46,6 +47,7 @@
     "moment": "2.11.1",
     "mongoose": "4.3.7",
     "mongoose-findorcreate": "0.1.2",
+    "node-schedule": "1.0.0",
     "nodemon": "1.8.1",
     "passport": "0.3.2",
     "passport-twitter": "1.0.3",

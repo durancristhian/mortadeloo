@@ -1,3 +1,4 @@
+import { initSchedule } from "./lib/check-results";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
@@ -85,4 +86,5 @@ mongoose.connection.on("connected", () => {
     logger.info(process.env.DB);
     server.listen(port, () => logger.info(`http://localhost:${port}`));
     realtime(server, session);
+    initSchedule();
 });
