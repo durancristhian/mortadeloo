@@ -26,10 +26,10 @@ function collectData(callback) {
     ], callback);
 }
 
-function formatData(playName) {
+function formatData(playName, callback) {
     collectData((error, results) => {
         if (error) {
-            return logger.error(error);
+            callback(error);
         }
 
         const [ numbers, users ] = results;
@@ -39,19 +39,39 @@ function formatData(playName) {
             parseInt(numbers.provincia[playName].substring(2))
         ];
 
-        const filteredUsers = users.filter((user) => {
-            return user.numbers.some((n) => {
+        const tweetsMetadata = users.reduce((tweets, user) => {
+            const thereIsCoincidence = user.numbers.some((n) => {
                 return play.indexOf(n) > -1;
             });
-        });
 
-        logger.info(filteredUsers);
+            if (thereIsCoincidence) {
+                tweets.push({
+                    user,
+                    play,
+                    playName
+                });
+            }
+
+            return tweets;
+        }, []);
+
+        callback(null, tweetsMetadata);
+    });
+}
+
+function sendTweets(playName) {
+    formatData(playName, (error, tweetsMetadata) => {
+        if (error) {
+            logger.error(error);
+        }
+
+        logger.info(tweetsMetadata);
     });
 }
 
 export function initSchedule() {
-    schedule.scheduleJob("0 0 12 * * *", () => formatData("laPrimera"));
-    schedule.scheduleJob("0 30 14 * * *", () => formatData("matutina"));
-    schedule.scheduleJob("0 0 18 * * *", () => formatData("vespertina"));
-    schedule.scheduleJob("0 30 21 * * *", () => formatData("nocturna"));
+    schedule.scheduleJob("0 0 12 * * *", () => sendTweets("laPrimera"));
+    schedule.scheduleJob("0 30 14 * * *", () => sendTweets("matutina"));
+    schedule.scheduleJob("0 0 18 * * *", () => sendTweets("vespertina"));
+    schedule.scheduleJob("0 30 21 * * *", () => sendTweets("nocturna"));
 }
