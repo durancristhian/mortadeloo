@@ -29,7 +29,7 @@ function collectData(callback) {
 function formatData(playName, callback) {
     collectData((error, results) => {
         if (error) {
-            callback(error);
+            return callback(error);
         }
 
         const [ numbers, users ] = results;
@@ -62,7 +62,7 @@ function formatData(playName, callback) {
 function sendTweets(playName) {
     formatData(playName, (error, tweetsMetadata) => {
         if (error) {
-            logger.error(error);
+            return logger.error(error);
         }
 
         logger.info(tweetsMetadata);

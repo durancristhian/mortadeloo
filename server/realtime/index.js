@@ -1,3 +1,4 @@
+import logger from "../lib/logger";
 import sharedsession from "express-socket.io-session";
 import socketio from "socket.io";
 import User from "../models/user";
@@ -24,7 +25,7 @@ export default function (server, session) {
                 (err, doc) => {
                     if (err) {
                         socket.emit("number-error", err);
-                        return;
+                        return logger.error(err);
                     }
 
                     socket.emit("follow-number-ok", {
@@ -50,7 +51,7 @@ export default function (server, session) {
                 (err, doc) => {
                     if (err) {
                         socket.emit("number-error", err);
-                        return;
+                        return logger.error(err);
                     }
 
                     socket.emit("unfollow-number-ok", {

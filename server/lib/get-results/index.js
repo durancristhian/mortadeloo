@@ -1,21 +1,24 @@
 import cheerio from "cheerio";
+import logger from "../logger";
 import moment from "moment";
 import request from "request";
 
 const options = {
     url : "http://www.dejugadas.com/quinielas/datospizarra.php",
     form: {
-        fecha: moment().format('YYYY/MM/DD')
+        fecha: moment().format("YYYY/MM/DD")
     }
 };
 
 export function getResults(callback) {
+    if (moment().day() === 0) {
+        callback("It's sunday");
+    }
+
     request.post(options, (error, response, body) => {
-        if (error || response.statusCode !== 200) {
-            callback({
-                error,
-                statusCode: response.statusCode
-            });
+        if (error) {
+            logger.error(error);
+            callback(error);
         }
 
         let $ = cheerio.load(body, {
