@@ -70,8 +70,8 @@ function sendTweets(playName) {
 }
 
 export function initSchedule() {
-    schedule.scheduleJob("0 0 12 * * *", () => sendTweets("laPrimera"));
-    schedule.scheduleJob("0 30 14 * * *", () => sendTweets("matutina"));
-    schedule.scheduleJob("0 0 18 * * *", () => sendTweets("vespertina"));
-    schedule.scheduleJob("0 30 21 * * *", () => sendTweets("nocturna"));
+    schedule.scheduleJob("0 0 12 * * 1-6", () => sendTweets("laPrimera"));
+    schedule.scheduleJob("0 30 14 * * 1-6", () => sendTweets("matutina"));
+    schedule.scheduleJob("0 0 18 * * 1-6", () => sendTweets("vespertina"));
+    schedule.scheduleJob("0 30 21 * * 1-6", () => sendTweets("nocturna"));
 }
