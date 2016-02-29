@@ -2,6 +2,7 @@ import async from "async";
 import { getResults } from "../get-results";
 import logger from "../logger";
 import schedule from "node-schedule";
+import Twitter from "twitter";
 import User from "../../models/user";
 
 function buildTweetMetadata(users, playType, numberToFind) {
@@ -52,20 +53,37 @@ function formatData(playName, callback) {
         const provinciaPlayNumber = parseInt(numbers.provincia[playName].substring(2));
         const provinciaPlayTweets = buildTweetMetadata(users, "provincia", provinciaPlayNumber);
 
-        callback(null, {
-            nacionalPlayTweets,
-            provinciaPlayTweets
-        });
+        const tweetsMetadata = nacionalPlayTweets.concat(provinciaPlayTweets);
+
+        callback(null, tweetsMetadata);
     });
 }
 
 function sendTweets(playName) {
-    formatData(playName, (error, tweetsMetadata) => {
+    formatData(playName, (error, tweets) => {
         if (error) {
             return logger.error(error);
         }
 
-        logger.info(tweetsMetadata);
+        const client = new Twitter({
+            consumer_key       : process.env.TWITTER_KEY,
+            consumer_secret    : process.env.TWITTER_SECRET,
+            access_token_key   : process.env.TWITTER_ACCESS_TOKEN_KEY,
+            access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+        });
+
+        tweets.forEach((t) => {
+            client.post("statuses/update", {
+                status: t
+            }, (err, data, response) => {
+                if (err) {
+                    return logger.error(err);
+                }
+
+                logger.info(data);
+                logger.info(response);
+            });
+        });
     });
 }
 
