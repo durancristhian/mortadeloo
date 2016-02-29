@@ -4,6 +4,18 @@ import logger from "../logger";
 import schedule from "node-schedule";
 import User from "../../models/user";
 
+function buildTweetMetadata(users, playType, numberToFind) {
+    return users.reduce((tweets, user) => {
+        const thereIsCoincidence = user.numbers.indexOf(numberToFind) > -1;
+
+        if (thereIsCoincidence) {
+            tweets.push(`@${user.profile.username} salió el ${numberToFind} (${playType})`);
+        }
+
+        return tweets;
+    }, []);
+}
+
 function collectData(callback) {
     async.parallel([
         getResults,
@@ -34,28 +46,16 @@ function formatData(playName, callback) {
 
         const [ numbers, users ] = results;
 
-        const play = [
-            parseInt(numbers.nacional[playName].substring(2)),
-            parseInt(numbers.provincia[playName].substring(2))
-        ];
+        const nacionalPlayNumber = parseInt(numbers.nacional[playName].substring(2));
+        const nacionalPlayTweets = buildTweetMetadata(users, "nacional", nacionalPlayNumber);
 
-        const tweetsMetadata = users.reduce((tweets, user) => {
-            const thereIsCoincidence = user.numbers.some((n) => {
-                return play.indexOf(n) > -1;
-            });
+        const provinciaPlayNumber = parseInt(numbers.provincia[playName].substring(2));
+        const provinciaPlayTweets = buildTweetMetadata(users, "provincia", provinciaPlayNumber);
 
-            if (thereIsCoincidence) {
-                tweets.push({
-                    user,
-                    play,
-                    playName
-                });
-            }
-
-            return tweets;
-        }, []);
-
-        callback(null, tweetsMetadata);
+        callback(null, {
+            nacionalPlayTweets,
+            provinciaPlayTweets
+        });
     });
 }
 
