@@ -1,0 +1,11 @@
+{
+    "autoprefixer": {
+        "browsers": "last 2 versions"
+    },
+    "input": "client/css/main.css",
+    "output": "public/css/main.css",
+    "use": [
+        "autoprefixer",
+        "postcss-import"
+    ]
+}
