@@ -1,7 +1,6 @@
 import $ from "jquery";
 import { toggleActive } from "./toggle";
 import { getResults } from "./api";
-import { currentRoute } from "./current-route";
 
 getResults((error, results) => {
     $("#loading").addClass("hide");
@@ -21,6 +20,4 @@ getResults((error, results) => {
     }
 });
 
-if (currentRoute === "/app") {
-    toggleActive("#toggles");
-}
+toggleActive("#toggles");

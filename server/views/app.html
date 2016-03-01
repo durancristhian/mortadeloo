@@ -1,6 +1,9 @@
 <div class="container px2 py4">
+    <div class="right-align">
+        <a href="/logout" class="bg-red bold border btn caps rounded text-shadow white">Salir</a>
+    </div>
+    <h2 class="border-bottom gray mb4 mt4 pb2">Sorteos del día</h2>
     <div id="loading">
-        <h2 class="center gray h1 mb4 mt0">Buscando información</h2>
         <div class="spinner">
           <div class="bounce1"></div>
           <div class="bounce2"></div>
@@ -8,52 +11,58 @@
         </div>
     </div>
     <div id="table" class="hide">
-        <h2 class="center gray h1 mb4 mt0">{{formatDate null "DD [de] MMMM[,] YYYY"}}</h2>
-        <h2 class="mb2 mt0">Nacional</h2>
-        <div class="clearfix">
+        <h3 class="mb2 mt0">Nacional</h2>
+        <div class="clearfix center">
             <div class="col col-6 md-col-3">
-                <p class="mb0">Primera (11:30)</p>
-                <p id="nacional-primera" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">La Primera</p>
+                <p class="h6 m0">11:30 hs</p>
+                <p id="nacional-primera" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Matutina (14:00)</p>
-                <p id="nacional-matutina" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Matutina</p>
+                <p class="h6 m0">14:00 hs</p>
+                <p id="nacional-matutina" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Vespertina (17:30)</p>
-                <p id="nacional-vespertina" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Vespertina</p>
+                <p class="h6 m0">17:30 hs</p>
+                <p id="nacional-vespertina" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Nocturna (21:00)</p>
-                <p id="nacional-nocturna" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Nocturna</p>
+                <p class="h6 m0">21:00 hs</p>
+                <p id="nacional-nocturna" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
         </div>
-        <h2 class="mb2 mt4">Provincia</h2>
-        <div class="clearfix">
+        <h3 class="h3 mb2 mt4">Provincia</h2>
+        <div class="clearfix center">
             <div class="col col-6 md-col-3">
-                <p class="mb0">Primera (11:30)</p>
-                <p id="provincia-primera" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">La Primera</p>
+                <p class="h6 m0">11:30 hs</p>
+                <p id="provincia-primera" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Matutina (14:00)</p>
-                <p id="provincia-matutina" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Matutina</p>
+                <p class="h6 m0">14:00 hs</p>
+                <p id="provincia-matutina" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Vespertina (17:30)</p>
-                <p id="provincia-vespertina" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Vespertina</p>
+                <p class="h6 m0">17:30 hs</p>
+                <p id="provincia-vespertina" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
             <div class="col col-6 md-col-3">
-                <p class="mb0">Nocturna (21:00)</p>
-                <p id="provincia-nocturna" class="bold caps h3 mb0"></p>
+                <p class="bold mb0 mt3">Nocturna</p>
+                <p class="h6 m0">21:00 hs</p>
+                <p id="provincia-nocturna" class="bg-white bold border box-shadow caps h3 inline-block mb1 mt1 p2 rounded"></p>
             </div>
         </div>
     </div>
-</div>
-<div class="container mb4 px2">
-    <h2 class="center gray h1 mb4 mt0">Suscripciones</h2>
+    <h2 class="border-bottom gray mb0 mt4 pb2">Mis suscripciones</h2>
     <div id="toggles" class="clearfix">
         {{#times 100}}
             {{> follow-number number=this}}
         {{/times}}
     </div>
 </div>
+<script defer src="/js/app.js"></script>

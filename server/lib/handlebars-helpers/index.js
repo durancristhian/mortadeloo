@@ -1,5 +1,4 @@
 import moment from "moment";
-import os from "os";
 
 moment.locale("es", {
     months: [
@@ -18,12 +17,6 @@ moment.locale("es", {
     ]
 });
 
-export function formatDate(date, format) {
-    const ensuredDate = date || new Date();
-
-    return moment.utc(ensuredDate).format(format);
-}
-
 export function getClassIfActive(numbers, number) {
     return numbers.indexOf(number) !== -1 ? "toggle-active" : "";
 }
@@ -34,10 +27,6 @@ export function getDream(data, number) {
 
 export function pad(number) {
     return (number < 10) ? ("0" + number) : number;
-}
-
-export function platformInformation() {
-    return os.platform();
 }
 
 export function times(to, block) {

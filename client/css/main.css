@@ -1,9 +1,28 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Oxygen", sans-serif;
+    letter-spacing: 1px;
+}
+
 a:hover {
     text-decoration: none;
 }
 
-.font-size-0 {
-    font-size: 0;
+.bg-lighten-5 {
+    background-color: #f9f9f9;
+}
+
+.box-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+}
+
+.pb2 {
+    padding-bottom: 1rem;
 }
 
 .spinner {
@@ -53,11 +72,6 @@ a:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, .5);
 }
 
-.thumbnail {
-    height: 30px;
-    width: 30px;
-}
-
 .toggle {
     display: inline-block;
     font-size: 12px;
@@ -103,4 +117,10 @@ a:hover {
 
 .toggle.toggle-active:before {
     background-color: #339933;
+}
+
+@media (min-width: 52em) {
+    .md-pl3 {
+        padding-left: 2rem;
+    }
 }

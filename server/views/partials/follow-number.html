@@ -1,13 +1,11 @@
 <div class="col col-6 md-col-4 lg-col-3">
-    <div class="mb3">
-        <div class="clearfix">
-            <p class="bold caps gray h5 mb1">{{getDream @root.dreams number}}</p>
-            <div class="col col-4">
-                <span class="bg-darken-1 black border h1 inline-block px2 py1 rounded">{{pad number}}</span>
+    <div class="mt4">
+        <div class="center">
+            <p class="bold caps gray h5 mb1 truncate">{{getDream @root.dreams number}}</p>
+            <div>
+                <p class="bg-darken-1 black border box-shadow h1 inline-block px2 py1 rounded">{{pad number}}</p>
             </div>
-            <div class="col col-8">
-                <a href="#!" class="black toggle js-toggle {{getClassIfActive @root.user.numbers number}}" data-number="{{number}}">Seguir</a>
-            </div>
+            <a href="#!" class="black toggle js-toggle {{getClassIfActive @root.user.numbers number}}" data-number="{{number}}">Seguir</a>
         </div>
     </div>
 </div>

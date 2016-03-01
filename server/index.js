@@ -58,9 +58,6 @@ authentication();
 import dreams from "./lib/dreams";
 app.use(dreams);
 
-import locals from "./middlewares/locals";
-app.use(locals);
-
 app.use(express.static("public"));
 
 import apiController from "./api";

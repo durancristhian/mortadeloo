@@ -1,50 +1,21 @@
 <div class="container px2 py4">
-    <div id="loading">
-        <h2 class="center gray h1 mb4 mt0">Buscando información</h2>
-        <div class="spinner">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
-        </div>
-    </div>
-    <div id="table" class="hide">
-        <h2 class="center gray h1 mb4 mt0">{{formatDate null "DD [de] MMMM[,] YYYY"}}</h2>
-        <h2 class="mb2 mt0">Nacional</h2>
-        <div class="clearfix">
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Primera (11:30)</p>
-                <p id="nacional-primera" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Matutina (14:00)</p>
-                <p id="nacional-matutina" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Vespertina (17:30)</p>
-                <p id="nacional-vespertina" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Nocturna (21:00)</p>
-                <p id="nacional-nocturna" class="bold caps h3 mb0"></p>
+    <div class="clearfix">
+        <div class="col col-12 md-col-4">
+            <div class="bg-white border box-shadow mb4 px2 py3 rounded">
+                <p class="bold center h2 mb3">Ingreso</p>
+                <p class="m0">Usá tu cuenta de <a href="/auth/twitter" class="blue bold caps">Twitter</a> para acceder</p>
             </div>
         </div>
-        <h2 class="mb2 mt4">Provincia</h2>
-        <div class="clearfix">
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Primera (11:30)</p>
-                <p id="provincia-primera" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Matutina (14:00)</p>
-                <p id="provincia-matutina" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Vespertina (17:30)</p>
-                <p id="provincia-vespertina" class="bold caps h3 mb0"></p>
-            </div>
-            <div class="col col-6 md-col-3">
-                <p class="mb0">Nocturna (21:00)</p>
-                <p id="provincia-nocturna" class="bold caps h3 mb0"></p>
+        <div class="col col-12 md-col-8">
+            <div class="md-pl3">
+                <h2 class="mb3 mt0">¿Qué es esto?</h2>
+                <p class="m0"><span class="bold">Mortadeloo</span> es una aplicación para estar atento a los números de la quiniela en Argentina.</p>
+                <h2 class="mb3 mt4">¿Cómo funciona?</h2>
+                <p class="m0">Utilizá tu cuenta de <span class="bold">Twitter</span> para acceder a la aplicación. Una vez adentro, vas a poder:</p>
+                <ul class="mb0 mt2">
+                    <li class="mb2">Consultar las cabezas (1er premio) de las jugadas del día (<span class="bold">LaPrimera, Matutina, Vespertina y Nocturna</span>) en las quinielas <span class="bold">Nacional</span> y <span class="bold">Provincia</span></li>
+                    <li><span class="bold">Suscribirte a resultados</span>: Vas a poder decirnos a que números querés seguir (Cualquiera, del 00 al 99) y te vamos a enviar un tweet después de cada sorteo si ese número salió</li>
+                </ul>
             </div>
         </div>
     </div>
