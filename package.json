@@ -11,7 +11,7 @@
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
-    "prebuild-css": "de public/css/**/*.*",
+    "prebuild-css": "de public/css/**/*.* && copyfiles -u 1 client/css/main.css public",
     "prebuild-images": "de public/img/**/*.*",
     "prebuild-js": "de public/js/**/*.* && copyfiles -u 1 client/js/app.js public",
     "start": "babel-node server",
