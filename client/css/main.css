@@ -23,6 +23,10 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, .05);
 }
 
+.box {
+    width: 100px;
+}
+
 .pb2 {
     padding-bottom: 1rem;
 }
