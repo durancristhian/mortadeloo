@@ -3,18 +3,22 @@
   "version": "0.1.0",
   "description": "mortadeloo app",
   "scripts": {
-    "prebuild": "de public/**/*.*",
     "build": "npm run build-css & npm run build-images & npm run build-js",
     "build-css": "copyfiles -u 1 client/css/**/*.css public",
     "build-images": "copyfiles -u 1 client/img/*.* public",
-    "get-dreams": "babel-node server/scripts/dreams",
-    "prebuild-js": "copyfiles -u 1 client/js/app.js public",
     "build-js": "browserify -d -t [ babelify --presets [ es2015 ] ] client/js/app.js | exorcist public/js/app.map.js > public/js/app.js",
+    "get-dreams": "babel-node server/scripts/dreams",
     "lint": "eslint **/*.js",
     "lint-html": "eslint --format html **/*.js > eslint.html",
     "postinstall": "npm run build",
+    "prebuild-css": "de public/css/**/*.*",
+    "prebuild-images": "de public/img/**/*.*",
+    "prebuild-js": "de public/js/**/*.* && copyfiles -u 1 client/js/app.js public",
     "start": "babel-node server",
-    "start-dev": "nodemon -x npm run start -w server"
+    "start-dev": "nodemon -x npm run start -w server & npm run watch",
+    "watch": "npm run watch-css & npm run watch-js",
+    "watch-css": "onchange 'client/css/**/*.css' -v -- npm run build-css",
+    "watch-js": "onchange 'client/js/**/*.js' -v -- npm run build-js"
   },
   "engines": {
     "node": ">= 5.0.0"
@@ -49,6 +53,7 @@
     "mongoose-findorcreate": "0.1.2",
     "node-schedule": "1.0.0",
     "nodemon": "1.8.1",
+    "onchange": "2.0.0",
     "passport": "0.3.2",
     "passport-twitter": "1.0.3",
     "request": "2.67.0",
