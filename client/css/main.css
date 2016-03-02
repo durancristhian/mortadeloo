@@ -36,7 +36,7 @@ a:hover {
 }
 
 .spinner > div {
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: bounce 1.4s infinite ease-in-out both;
     background-color: #444;
     border-radius: 100%;
     display: inline-block;
@@ -52,16 +52,7 @@ a:hover {
     animation-delay: -0.16s;
 }
 
-@-webkit-keyframes sk-bouncedelay {
-    0%, 80%, 100% {
-        transform: scale(0);
-    }
-    40% {
-        transform: scale(1.0);
-    }
-}
-
-@keyframes sk-bouncedelay {
+@keyframes bounce {
     0%, 80%, 100% {
         transform: scale(0);
     } 40% {

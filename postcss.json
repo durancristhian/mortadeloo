@@ -2,10 +2,14 @@
     "autoprefixer": {
         "browsers": "last 2 versions"
     },
+    "csswring": {
+        "removeAllComments": true
+    },
     "input": "client/css/main.css",
     "output": "public/css/main.css",
     "use": [
+        "postcss-import",
         "autoprefixer",
-        "postcss-import"
+        "csswring"
     ]
 }

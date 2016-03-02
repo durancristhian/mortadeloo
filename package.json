@@ -38,6 +38,7 @@
     "compression": "1.6.1",
     "cookie-parser": "1.4.1",
     "copyfiles": "0.2.1",
+    "csswring": "4.2.1",
     "del-cli": "0.1.2",
     "dotenv": "2.0.0",
     "eslint": "1.10.3",
