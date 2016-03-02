@@ -4,7 +4,7 @@
   "description": "mortadeloo app",
   "scripts": {
     "build": "npm run build-css & npm run build-images & npm run build-js",
-    "build-css": "postcss -c postcss.json",
+    "build-css": "postcss -c postcss.json --map",
     "build-images": "copyfiles -u 1 client/img/*.* public",
     "build-js": "browserify -d -t [ babelify --presets [ es2015 ] ] client/js/app.js | exorcist public/js/app.map.js > public/js/app.js",
     "get-dreams": "babel-node server/scripts/dreams",
