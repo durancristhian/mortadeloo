@@ -1,5 +1,4 @@
 import cheerio from "cheerio";
-import logger from "../logger";
 import moment from "moment";
 import request from "request";
 
@@ -17,7 +16,7 @@ export function getResults(callback) {
 
     request.post(options, (error, response, body) => {
         if (error) {
-            logger.error(error);
+            console.error(error);
             callback(error);
         }
 

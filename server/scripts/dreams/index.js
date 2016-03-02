@@ -31,9 +31,9 @@ request.get(options, (error, response, body) => {
             fs.mkdirSync(resourcesDir);
         }
 
-        fs.writeFile(dreamsFile, JSON.stringify(results), "binary", err => {
-            if (err) {
-                return console.log(err);
+        fs.writeFile(dreamsFile, JSON.stringify(results), "binary", error => {
+            if (error) {
+                return console.error(error);
             }
         });
     } else {

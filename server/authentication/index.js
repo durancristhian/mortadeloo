@@ -5,7 +5,7 @@ import User from "../models/user";
 const TwitterStrategy = passportTwitter.Strategy;
 
 function deserializeUser(id, done) {
-    User.findById(id, (err, user) => { done(err, user); });
+    User.findById(id, (error, user) => { done(error, user); });
 }
 
 function serializeUser(user, done) {
@@ -16,8 +16,8 @@ function twitterStrategyImplementation(token, tokenSecret, profile, done) {
     User.findOrCreate(
         { "profile.id": profile.id },
         { profile },
-        (err, user) => {
-            if (err) { return done(err); }
+        (error, user) => {
+            if (error) { return done(error); }
             done(null, user);
         }
     );

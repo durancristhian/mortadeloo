@@ -20,8 +20,8 @@ export function toggleActive(selector) {
     $(selector).on("click", "a", numberClick);
 
     socket.on("follow-number-ok", result => console.log(result));
-    socket.on("number-error", err => {
-        console.log(err);
+    socket.on("number-error", error => {
+        console.error(error);
         location.result();
     });
     socket.on("unfollow-number-ok", result => console.log(result));

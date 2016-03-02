@@ -1,4 +1,3 @@
-import logger from "../lib/logger";
 import sharedsession from "express-socket.io-session";
 import socketio from "socket.io";
 import User from "../models/user";
@@ -22,10 +21,10 @@ export default function (server, session) {
                     safe  : true,
                     upsert: true
                 },
-                (err, doc) => {
-                    if (err) {
-                        socket.emit("number-error", err);
-                        return logger.error(err);
+                (error, doc) => {
+                    if (error) {
+                        socket.emit("number-error", error);
+                        return console.error(error);
                     }
 
                     socket.emit("follow-number-ok", {
@@ -48,10 +47,10 @@ export default function (server, session) {
                     safe  : true,
                     upsert: true
                 },
-                (err, doc) => {
-                    if (err) {
-                        socket.emit("number-error", err);
-                        return logger.error(err);
+                (error, doc) => {
+                    if (error) {
+                        socket.emit("number-error", error);
+                        return console.error(error);
                     }
 
                     socket.emit("unfollow-number-ok", {

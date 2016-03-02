@@ -7,7 +7,6 @@ import expressHandlebars from "express-handlebars";
 import expressSession from "express-session";
 import helmet from "helmet";
 import http from "http";
-import logger from "./lib/logger";
 import mongoose from "mongoose";
 import passport from "passport";
 import path from "path";
@@ -75,13 +74,12 @@ app.use("/logout", logoutController);
 mongoose.connect(process.env.DB);
 
 mongoose.connection.on("error", (error) => {
-    logger.error(error);
+    console.error(error);
     process.exit(1);
 });
 
 mongoose.connection.on("connected", () => {
-    logger.info(process.env.DB);
-    server.listen(port, () => logger.info(`http://localhost:${port}`));
+    server.listen(port, () => console.log(`http://localhost:${port}`));
     realtime(server, session);
     initSchedule();
 });

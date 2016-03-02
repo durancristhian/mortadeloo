@@ -1,6 +1,5 @@
 import async from "async";
 import { getResults } from "../get-results";
-import logger from "../logger";
 import schedule from "node-schedule";
 import Twitter from "twitter";
 import User from "../../models/user";
@@ -28,9 +27,9 @@ function collectData(callback) {
                     "numbers"         : 1,
                     "profile.username": 1
                 })
-                .exec((err, users) => {
-                    if (err) {
-                        callback(err);
+                .exec((error, users) => {
+                    if (error) {
+                        callback(error);
                     }
 
                     callback(null, users);
@@ -62,7 +61,7 @@ function formatData(playName, callback) {
 function sendTweets(playName) {
     formatData(playName, (error, tweets) => {
         if (error) {
-            return logger.error(error);
+            return console.error(error);
         }
 
         const client = new Twitter({
@@ -75,13 +74,13 @@ function sendTweets(playName) {
         tweets.forEach((t) => {
             client.post("statuses/update", {
                 status: t
-            }, (err, data, response) => {
-                if (err) {
-                    return logger.error(err);
+            }, (error, data, response) => {
+                if (error) {
+                    return console.error(error);
                 }
 
-                logger.info(data);
-                logger.info(response);
+                console.log(data);
+                console.log(response);
             });
         });
     });
