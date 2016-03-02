@@ -1,5 +1,4 @@
 *.env-local
 *.log
-eslint.html
 node_modules
 public
