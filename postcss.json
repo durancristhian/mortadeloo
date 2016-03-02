@@ -7,9 +7,13 @@
     },
     "input": "client/css/main.css",
     "output": "public/css/main.css",
+    "postcss-banner": {
+        "banner": "\n * mortadeloo :D\n"
+    },
     "use": [
         "postcss-import",
         "autoprefixer",
-        "csswring"
+        "csswring",
+        "postcss-banner"
     ]
 }
