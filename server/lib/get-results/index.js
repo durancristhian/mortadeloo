@@ -11,19 +11,23 @@ const options = {
 
 export function getResults(callback) {
     if (moment().day() === 0) {
-        callback("It's sunday");
+        return callback(undefined, {
+            code   : 0,
+            message: "Los domingos no hay sorteos"
+        });
     }
 
     request.post(options, (error, response, body) => {
         if (error) {
             console.error(error);
-            callback(error);
+            return callback(error);
         }
 
         let $ = cheerio.load(body, {
             normalizeWhitespace: true
         });
         let results = {
+            code     : 1,
             nacional : {},
             provincia: {}
         };
@@ -38,6 +42,6 @@ export function getResults(callback) {
         results.provincia.vespertina = $("#t_datos tr").first().next().children().eq(4).text();
         results.provincia.nocturna = $("#t_datos tr").first().next().children().eq(5).text();
 
-        callback(null, results);
+        return callback(null, results);
     });
 }

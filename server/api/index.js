@@ -9,7 +9,7 @@ router.get("/results", (req, res) => {
             return res.status(500).json(error);
         }
 
-        res.json(results);
+        return res.json(results);
     });
 });
 
