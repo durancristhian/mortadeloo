@@ -1,7 +1,7 @@
 import $ from "jquery";
 
-export function getResults(callback) {
-    $.ajax("/api/results", {
+export function api(resource, callback) {
+    $.ajax(`/api/${resource}`, {
         error  : error => callback(error),
         success: results => callback(null, results)
     });

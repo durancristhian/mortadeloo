@@ -10,13 +10,6 @@ const options = {
 };
 
 export function getResults(callback) {
-    if (moment().day() === 0) {
-        return callback(undefined, {
-            code   : 0,
-            message: "Los domingos no hay sorteos"
-        });
-    }
-
     request.post(options, (error, response, body) => {
         if (error) {
             console.error(error);

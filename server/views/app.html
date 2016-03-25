@@ -2,16 +2,15 @@
     <div class="right-align">
         <a href="/logout" class="bg-red bold border btn caps rounded text-shadow white">Cerrar sesión</a>
     </div>
-    <h2 class="border-bottom caps mb4 mt4 pb2">Sorteos del día</h2>
-    <div id="loading">
+    <div id="loading" class="mt4">
         <div class="spinner">
           <div class="bounce1"></div>
           <div class="bounce2"></div>
           <div class="bounce3"></div>
         </div>
     </div>
-    <p id="message" class="bg-white border box-shadow hide m0 p2 rounded"></p>
-    <div id="table" class="hide">
+    <div id="results" class="hide">
+        <h2 class="border-bottom caps mb4 mt4 pb2">Sorteos del día</h2>
         <h3 class="mb2 mt0">Nacional</h2>
         <div class="clearfix center">
             {{> white-box playName="La Primera" playTime="11:30 hs" id="nacional-primera"}}
