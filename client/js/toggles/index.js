@@ -2,9 +2,13 @@ import $ from "jquery";
 import socketio from "socket.io-client";
 
 let socket = socketio();
-socket.on("follow-number-ok", result => console.log(result));
-socket.on("error", error => console.error(error));
-socket.on("unfollow-number-ok", result => console.log(result));
+socket.on("notificate", result => {
+    if (result.ok) {
+        console.log(result);
+    } else {
+        console.error(result);
+    }
+});
 
 function numberClick(event) {
     event.preventDefault();
@@ -13,9 +17,9 @@ function numberClick(event) {
     element.toggleClass("toggle-active");
 
     if (element.hasClass("toggle-active")) {
-        socket.emit("follow-number", element.data("number"));
+        socket.emit("follow-number", parseInt(element.data("number")));
     } else {
-        socket.emit("unfollow-number", element.data("number"));
+        socket.emit("unfollow-number", parseInt(element.data("number")));
     }
 }
 
