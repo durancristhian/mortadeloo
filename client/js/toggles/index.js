@@ -1,14 +1,8 @@
 import $ from "jquery";
+import * as notificate from "../notifications";
 import socketio from "socket.io-client";
 
 let socket = socketio();
-socket.on("notificate", result => {
-    if (result.ok) {
-        console.log(result);
-    } else {
-        console.error(result);
-    }
-});
 
 function numberClick(event) {
     event.preventDefault();
@@ -16,12 +10,21 @@ function numberClick(event) {
     let element = $(event.target);
     element.toggleClass("toggle-active");
 
+    const socketData = { number: parseInt(element.data("number")) };
+
     if (element.hasClass("toggle-active")) {
-        socket.emit("follow-number", parseInt(element.data("number")));
+        socket.emit("follow-number", socketData);
     } else {
-        socket.emit("unfollow-number", parseInt(element.data("number")));
+        socket.emit("unfollow-number", socketData);
     }
 }
+
+socket.on("notificate", resultData => {
+    if (!resultData.ok) {
+        $(`[data-number='${resultData.number}']`).toggleClass("toggle-active");
+        notificate.error(resultData.message);
+    }
+});
 
 export function initToggles(selector) {
     $(selector).on("click", "a", numberClick);

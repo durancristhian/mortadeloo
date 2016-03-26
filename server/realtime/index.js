@@ -10,19 +10,21 @@ const queryOptions = {
 };
 
 function getInvalidIntMessage(number) {
-    return `'${number}' no es un entero entre 0 y 100`;
+    return `'${number}' no es un entero entre 0 y 100.`;
 }
 
-function queryCallback(error, doc, socket) {
+function queryCallback(error, doc, socket, socketData) {
     if (error) {
         return socket.emit("notificate", {
-            message: "No se pudo completar la operación",
+            message: `Ha ocurrido un error al seguir el ${socketData.number}. Inténtalo de nuevo.`,
+            number : socketData.number,
             ok     : false
         });
     }
 
     socket.emit("notificate", {
-        message: "Operación exitosa",
+        message: "Operación exitosa.",
+        number : socketData.number,
         ok     : true
     });
 }
@@ -33,35 +35,41 @@ export default function (server, session) {
     io.use(sharedsession(session));
 
     io.on("connection", (socket) => {
-        socket.on("follow-number", number => {
+        socket.on("follow-number", socketData => {
+            const number = socketData.number;
+
             if (!isValidInt(number)) {
                 return socket.emit("notificate", {
                     message: getInvalidIntMessage(number),
+                    number : number,
                     ok     : false
                 });
             }
 
             User.findByIdAndUpdate(
                 socket.handshake.session.passport.user,
-                { $push: { numbers: number } },
+                { $push: { numbers: socketData.number } },
                 queryOptions,
-                (error, doc) => queryCallback(error, doc, socket)
+                (error, doc) => queryCallback(error, doc, socket, socketData)
             );
         });
 
-        socket.on("unfollow-number", number => {
+        socket.on("unfollow-number", socketData => {
+            const number = socketData.number;
+
             if (!isValidInt(number)) {
                 return socket.emit("notificate", {
                     message: getInvalidIntMessage(number),
+                    number : number,
                     ok     : false
                 });
             }
 
             User.findByIdAndUpdate(
                 socket.handshake.session.passport.user,
-                { $pull: { numbers: number } },
+                { $pull: { numbers: socketData.number } },
                 queryOptions,
-                (error, doc) => queryCallback(error, doc, socket)
+                (error, doc) => queryCallback(error, doc, socket, socketData)
             );
         });
     });
