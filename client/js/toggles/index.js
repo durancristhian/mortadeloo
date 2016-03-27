@@ -7,12 +7,12 @@ let socket = socketio();
 function numberClick(event) {
     event.preventDefault();
 
-    let element = $(event.target);
-    element.toggleClass("toggle-active");
+    let $element = $(event.target);
+    $element.toggleClass("toggle-active");
 
-    const socketData = { number: parseInt(element.data("number")) };
+    const socketData = { number: parseInt($element.data("number")) };
 
-    if (element.hasClass("toggle-active")) {
+    if ($element.hasClass("toggle-active")) {
         socket.emit("follow-number", socketData);
     } else {
         socket.emit("unfollow-number", socketData);

@@ -85,7 +85,7 @@ a:hover {
     top: 5px;
     transition: all 200ms ease-in;
     width: 25px;
-    z-index: 5;
+    z-index: 2;
 }
 
 .toggle:before {
@@ -100,7 +100,7 @@ a:hover {
     top: 0;
     transition: all 200ms ease-in;
     width: 50px;
-    z-index: 2;
+    z-index: 1;
 }
 
 .toggle.toggle-active:after {
