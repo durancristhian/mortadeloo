@@ -18,7 +18,7 @@ function twitterStrategyImplementation(token, tokenSecret, profile, done) {
         { profile },
         (error, user) => {
             if (error) { return done(error); }
-            done(null, user);
+            return done(null, user);
         }
     );
 }

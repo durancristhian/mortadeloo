@@ -33,7 +33,7 @@ request.get(options, (error, response, body) => {
 
         fs.writeFile(dreamsFile, JSON.stringify(results), "binary", error => {
             if (error) {
-                return console.error(error);
+                console.error(error);
             }
         });
     } else {

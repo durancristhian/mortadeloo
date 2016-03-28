@@ -54,35 +54,35 @@ function formatData(playName, callback) {
 
         const tweetsMetadata = nacionalPlayTweets.concat(provinciaPlayTweets);
 
-        callback(null, tweetsMetadata);
+        return callback(null, tweetsMetadata);
     });
 }
 
 function sendTweets(playName) {
     formatData(playName, (error, tweets) => {
         if (error) {
-            return console.error(error);
-        }
-
-        const client = new Twitter({
-            consumer_key       : process.env.TWITTER_KEY,
-            consumer_secret    : process.env.TWITTER_SECRET,
-            access_token_key   : process.env.TWITTER_ACCESS_TOKEN_KEY,
-            access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-        });
-
-        tweets.forEach((t) => {
-            client.post("statuses/update", {
-                status: t
-            }, (error, data, response) => {
-                if (error) {
-                    return console.error(error);
-                }
-
-                console.log(data);
-                console.log(response);
+            console.error(error);
+        } else {
+            const client = new Twitter({
+                consumer_key       : process.env.TWITTER_KEY,
+                consumer_secret    : process.env.TWITTER_SECRET,
+                access_token_key   : process.env.TWITTER_ACCESS_TOKEN_KEY,
+                access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
             });
-        });
+
+            tweets.forEach((t) => {
+                client.post("statuses/update", {
+                    status: t
+                }, (error, data, response) => {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        console.log(data);
+                        console.log(response);
+                    }
+                });
+            });
+        }
     });
 }
 
