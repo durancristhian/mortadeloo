@@ -71,6 +71,10 @@ app.use("/app", appController);
 app.use("/auth/twitter", twitterController);
 app.use("/logout", logoutController);
 
+/* eslint-disable no-unused-vars */
+app.use((error, req, res, next) => res.send(500, error));
+/* eslint-enable no-unused-vars */
+
 mongoose.connect(process.env.DB);
 
 mongoose.connection.on("error", (error) => {
