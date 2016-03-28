@@ -1,4 +1,5 @@
 import $ from "jquery";
+import * as notificate from "./notifications";
 import { api } from "./api";
 import { initToggles } from "./toggles";
 
@@ -6,7 +7,7 @@ api("results", (error, results) => {
     $("#loading").addClass("hide");
 
     if (error) {
-        console.error(error);
+        notificate.error(error.message);
     } else {
         $("#nacional-primera").html(results.nacional.laPrimera);
         $("#nacional-matutina").html(results.nacional.matutina);
