@@ -11,6 +11,7 @@
         "banner": "\n * mortadeloo :D\n"
     },
     "use": [
+        "stylelint",
         "postcss-import",
         "autoprefixer",
         "csswring",
