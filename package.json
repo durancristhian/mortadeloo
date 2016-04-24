@@ -1,7 +1,7 @@
 {
   "name": "mortadeloo",
   "version": "0.1.0",
-  "description": "mortadeloo app",
+  "description": "mortadeloo es una aplicación para estar atento a los números de la quiniela en Argentina",
   "scripts": {
     "build": "npm run build-css & npm run build-images & npm run build-js",
     "build-css": "postcss -c postcss.json --map",
