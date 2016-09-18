@@ -4,7 +4,7 @@ import schedule from "node-schedule";
 import Twitter from "twitter";
 import User from "../../models/user";
 
-function buildTweetMetadata(users, playType, numberToFind) {
+function buildTweetMetadata (users, playType, numberToFind) {
     return users.reduce((tweets, user) => {
         const thereIsCoincidence = user.numbers.indexOf(numberToFind) > -1;
 
@@ -16,7 +16,7 @@ function buildTweetMetadata(users, playType, numberToFind) {
     }, []);
 }
 
-function collectData(callback) {
+function collectData (callback) {
     async.parallel([
         getResults,
         function (callback) {
@@ -38,7 +38,7 @@ function collectData(callback) {
     ], callback);
 }
 
-function formatData(playName, callback) {
+function formatData (playName, callback) {
     collectData((error, results) => {
         if (error) {
             return callback(error);
@@ -58,7 +58,7 @@ function formatData(playName, callback) {
     });
 }
 
-function sendTweets(playName) {
+function sendTweets (playName) {
     formatData(playName, (error, tweets) => {
         if (error) {
             console.error(error);
@@ -86,7 +86,7 @@ function sendTweets(playName) {
     });
 }
 
-export function initSchedule() {
+export function initSchedule () {
     schedule.scheduleJob("0 0 12 * * 1-6", () => sendTweets("laPrimera"));
     schedule.scheduleJob("0 30 14 * * 1-6", () => sendTweets("matutina"));
     schedule.scheduleJob("0 0 18 * * 1-6", () => sendTweets("vespertina"));

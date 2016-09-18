@@ -9,7 +9,7 @@ const options = {
     }
 };
 
-export function getResults(callback) {
+export function getResults (callback) {
     request.post(options, (error, response, body) => {
         if (error) {
             console.error(error);

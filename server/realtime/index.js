@@ -9,11 +9,11 @@ const queryOptions = {
     upsert: true
 };
 
-function getInvalidIntMessage(number) {
+function getInvalidIntMessage (number) {
     return `'${number}' no es un entero entre 0 y 100.`;
 }
 
-function queryCallback(error, doc, socket, socketData) {
+function queryCallback (error, doc, socket, socketData) {
     if (error) {
         socket.emit("notificate", {
             message: `Ha ocurrido un error al seguir el ${socketData.number}. Inténtalo de nuevo.`,

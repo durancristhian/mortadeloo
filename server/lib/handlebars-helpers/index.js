@@ -17,19 +17,19 @@ moment.locale("es", {
     ]
 });
 
-export function getClassIfActive(numbers, number) {
+export function getClassIfActive (numbers, number) {
     return numbers.indexOf(number) !== -1 ? "toggle-active" : "";
 }
 
-export function getDream(data, number) {
+export function getDream (data, number) {
     return data.dreams[number];
 }
 
-export function pad(number) {
+export function pad (number) {
     return (number < 10) ? ("0" + number) : number;
 }
 
-export function times(to, block) {
+export function times (to, block) {
     let accumulator = "";
 
     for (let i = 0; i < to; ++i) {

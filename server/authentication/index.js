@@ -4,15 +4,15 @@ import User from "../models/user";
 
 const TwitterStrategy = passportTwitter.Strategy;
 
-function deserializeUser(id, done) {
-    User.findById(id, (error, user) => { done(error, user); });
+function deserializeUser (id, done) {
+    User.findById(id, (error, user) => done(error, user));
 }
 
-function serializeUser(user, done) {
+function serializeUser (user, done) {
     done(null, user.id);
 }
 
-function twitterStrategyImplementation(token, tokenSecret, profile, done) {
+function twitterStrategyImplementation (token, tokenSecret, profile, done) {
     User.findOrCreate(
         { "profile.id": profile.id },
         { profile },
@@ -23,7 +23,7 @@ function twitterStrategyImplementation(token, tokenSecret, profile, done) {
     );
 }
 
-function init() {
+function init () {
     passport.use(new TwitterStrategy({
         callbackURL   : "/auth/twitter/callback",
         consumerKey   : process.env.TWITTER_KEY,

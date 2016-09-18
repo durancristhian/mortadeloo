@@ -4,7 +4,7 @@ import socketio from "socket.io-client";
 
 let socket = socketio();
 
-function numberClick(event) {
+function numberClick (event) {
     event.preventDefault();
 
     let $element = $(event.target);
@@ -26,6 +26,6 @@ socket.on("notificate", resultData => {
     }
 });
 
-export function initToggles(selector) {
+export function initToggles (selector) {
     $(selector).on("click", "a", numberClick);
 }
