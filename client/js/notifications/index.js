@@ -4,8 +4,6 @@ const $errorNotificationTemplate = $("#error-notification-template");
 const $notificationsContainer = $("#notifications-container");
 
 export function error(message) {
-    console.error(message);
-
     let notification = $errorNotificationTemplate.clone();
     notification.text(message).appendTo($notificationsContainer).removeClass("hide");
 
