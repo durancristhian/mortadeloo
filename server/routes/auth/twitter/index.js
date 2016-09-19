@@ -1,13 +1,13 @@
-import express from "express";
-import passport from "passport";
+import express from 'express'
+import passport from 'passport'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/", passport.authenticate("twitter"));
+router.get('/', passport.authenticate('twitter'))
 
-router.get("/callback", passport.authenticate("twitter", {
-    failureRedirect: "/",
-    successRedirect: "/app"
-}));
+router.get('/callback', passport.authenticate('twitter', {
+  failureRedirect: '/',
+  successRedirect: '/app'
+}))
 
-export default router;
+export default router

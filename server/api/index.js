@@ -1,16 +1,16 @@
-import express from "express";
-import { getResults } from "../lib/get-results";
+import express from 'express'
+import { getResults } from '../lib/get-results'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/results", (req, res) => {
-    getResults((error, results) => {
-        if (error) {
-            return res.status(500).json(error);
-        }
+router.get('/results', (req, res) => {
+  getResults((error, results) => {
+    if (error) {
+      return res.status(500).json(error)
+    }
 
-        return res.json(results);
-    });
-});
+    return res.json(results)
+  })
+})
 
-export default router;
+export default router
