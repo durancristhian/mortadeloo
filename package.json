@@ -84,5 +84,18 @@
     "onchange": "^3.0.2",
     "snazzy": "^5.0.0",
     "standard": "^8.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/durancristhian/mortadeloo.git"
+  },
+  "keywords": [
+    "quiniela",
+    "argentina",
+    "sorteo"
+  ],
+  "bugs": {
+    "url": "https://github.com/durancristhian/mortadeloo/issues"
+  },
+  "homepage": "https://github.com/durancristhian/mortadeloo#readme"
 }
