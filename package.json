@@ -71,7 +71,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run check-vulnerable-dependencies npm run dependency-check && npm run lint"
+      "pre-commit": "npm run check-vulnerable-dependencies && npm run dependency-check && npm run lint"
     }
   },
   "devDependencies": {
