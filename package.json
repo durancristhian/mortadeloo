@@ -9,6 +9,7 @@
     "build-images": "copyfiles -u 1 client/img/*.* public",
     "build-js": "browserify -d -t [ babelify --presets [ es2015 ] ] client/js/app.js | exorcist public/js/app.map.js > public/js/app.js",
     "check-vulnerable-dependencies": "nsp check",
+    "commit": "git cz",
     "dependency-check": "dependency-check ./package.json",
     "get-dreams": "babel-node server/scripts/dreams",
     "lint": "standard | snazzy",
@@ -66,11 +67,16 @@
     "twitter": "^1.2.5"
   },
   "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
     "ghooks": {
       "pre-commit": "npm run check-vulnerable-dependencies npm run dependency-check && npm run lint"
     }
   },
   "devDependencies": {
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.2.0",
     "dependency-check": "^2.6.0",
     "ghooks": "^1.0.3",
     "nodemon": "^1.9.1",
