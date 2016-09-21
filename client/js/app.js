@@ -4,7 +4,7 @@ import { api } from './api'
 import { initToggles } from './toggles'
 
 api('results', (error, results) => {
-  $('#loading').addClass('hide')
+  $('#loading').addClass('dn')
 
   if (error) {
     return notificate.error(error.message)
@@ -19,7 +19,7 @@ api('results', (error, results) => {
   $('#provincia-nocturna').html(results.provincia.nocturna)
   $('#provincia-primera').html(results.provincia.laPrimera)
 
-  $('#results').removeClass('hide')
+  $('#results').removeClass('dn')
 })
 
 initToggles('#toggles')

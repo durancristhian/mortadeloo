@@ -5,7 +5,7 @@ const $notificationsContainer = $('#notifications-container')
 
 export function error (message) {
   let notification = $errorNotificationTemplate.clone()
-  notification.text(message).appendTo($notificationsContainer).removeClass('hide')
+  notification.text(message).appendTo($notificationsContainer).removeClass('dn')
 
-  setTimeout(() => notification.addClass('hide'), 3000)
+  setTimeout(() => notification.addClass('dn'), 5000)
 }
