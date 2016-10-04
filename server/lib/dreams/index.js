@@ -2,13 +2,7 @@ import path from 'path'
 import fs from 'fs'
 
 const dreamsFile = path.join('server', 'resources', 'dreams.json')
+const dreams = fs.readFileSync(dreamsFile, 'utf8')
+const dreamsJSON = JSON.parse(dreams)
 
-export default function (req, res, next) {
-  fs.readFile(dreamsFile, 'binary', (error, data) => {
-    if (!error) {
-      res.locals.dreams = JSON.parse(data)
-    }
-
-    next()
-  })
-}
+export default dreamsJSON

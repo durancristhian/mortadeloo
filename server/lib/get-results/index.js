@@ -1,4 +1,5 @@
 import cheerio from 'cheerio'
+// import dreamsJSON from '../dreams'
 import moment from 'moment'
 import request from 'request'
 
@@ -7,6 +8,14 @@ const options = {
   form: {
     fecha: moment().format('YYYY/MM/DD')
   }
+}
+
+function getResultObject (numberAsString) {
+  // let meaning = '----'
+  let number = numberAsString
+
+  // return { meaning, number }
+  return { number }
 }
 
 export function getResults (callback) {
@@ -25,15 +34,18 @@ export function getResults (callback) {
       provincia: {}
     }
 
-    results.nacional.laPrimera = $('#t_datos tr').first().children().eq(2).text()
-    results.nacional.matutina = $('#t_datos tr').first().children().eq(3).text()
-    results.nacional.vespertina = $('#t_datos tr').first().children().eq(4).text()
-    results.nacional.nocturna = $('#t_datos tr').first().children().eq(5).text()
+    const nationalRow = $('#t_datos tr').first().children()
+    const provintialRow = $('#t_datos tr').first().next().children()
 
-    results.provincia.laPrimera = $('#t_datos tr').first().next().children().eq(2).text()
-    results.provincia.matutina = $('#t_datos tr').first().next().children().eq(3).text()
-    results.provincia.vespertina = $('#t_datos tr').first().next().children().eq(4).text()
-    results.provincia.nocturna = $('#t_datos tr').first().next().children().eq(5).text()
+    results.nacional.laPrimera = getResultObject(nationalRow.eq(2).text())
+    results.nacional.matutina = getResultObject(nationalRow.eq(3).text())
+    results.nacional.vespertina = getResultObject(nationalRow.eq(4).text())
+    results.nacional.nocturna = getResultObject(nationalRow.eq(5).text())
+
+    results.provincia.laPrimera = getResultObject(provintialRow.eq(2).text())
+    results.provincia.matutina = getResultObject(provintialRow.eq(3).text())
+    results.provincia.vespertina = getResultObject(provintialRow.eq(4).text())
+    results.provincia.nocturna = getResultObject(provintialRow.eq(5).text())
 
     return callback(null, results)
   })

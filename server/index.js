@@ -54,7 +54,7 @@ app.use(passport.session())
 import authentication from './authentication'
 authentication()
 
-import dreams from './lib/dreams'
+import dreams from './middlewares/dreams'
 app.use(dreams)
 
 app.use(express.static('public'))
@@ -73,12 +73,20 @@ app.use('/auth/twitter', twitterController)
 app.use('/goodbye', goodbyeController)
 app.use('/logout', logoutController)
 
-app.use((error, req, res, next) => res.status(500).send(error))
+app.use((error, req, res, next) => {
+  res.status(500).send({
+    error: error.message,
+    stack: error.stack
+  })
+})
 
 mongoose.connect(process.env.DB)
 
 mongoose.connection.on('error', (error) => {
-  console.error(error)
+  console.error({
+    error: error.message,
+    stack: error.stack
+  })
   process.exit(1)
 })
 
