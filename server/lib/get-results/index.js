@@ -3,13 +3,6 @@ import cheerio from 'cheerio'
 import moment from 'moment'
 import request from 'request'
 
-const options = {
-  url: 'http://www.dejugadas.com/quinielas/datospizarra.php',
-  form: {
-    fecha: moment().format('YYYY/MM/DD')
-  }
-}
-
 function getResultObject (numberAsString) {
   // let meaning = '----'
   let number = numberAsString
@@ -18,7 +11,14 @@ function getResultObject (numberAsString) {
   return { number }
 }
 
-export function getResults (callback) {
+export function getResults (date, callback) {
+  const options = {
+    form: {
+      fecha: moment(date, 'YYYY/MM/DD').format('YYYY/MM/DD')
+    },
+    url: 'http://www.dejugadas.com/quinielas/datospizarra.php'
+  }
+
   request.post(options, (error, response, body) => {
     if (error) {
       console.error(error)
