@@ -1,16 +1,10 @@
-<div id="results" class="dn tc">
-    <h2 class="mb3 mt0 ttu">Lotería Nacional</h2>
+<div id="results"></div>
+<div id="play-results-template" class="dn mv5 tc">
+    <h2 class="f2 mb3 mt0 ttu js-play-name"></h2>
     <div class="cf">
-        {{> white-box playName="La Primera" playTime="11:30 hs" numberId="nacional-primera-number" meaningId="nacional-primera-meaning" }}
-        {{> white-box playName="Matutina" playTime="14:00 hs" numberId="nacional-matutina-number" meaningId="nacional-matutina-meaning" }}
-        {{> white-box playName="Vespertina" playTime="17:30 hs" numberId="nacional-vespertina-number" meaningId="nacional-vespertina-meaning" }}
-        {{> white-box playName="Nocturna" playTime="21:00 hs" numberId="nacional-nocturna-number" meaningId="nacional-nocturna-meaning" }}
-    </div>
-    <h2 class="mb3 mt5 ttu">Lotería de la provincia</h2>
-    <div class="cf">
-        {{> white-box playName="La Primera" playTime="11:30 hs" numberId="provincia-primera-number" meaningId="provincia-primera-meaning" }}
-        {{> white-box playName="Matutina" playTime="14:00 hs" numberId="provincia-matutina-number" meaningId="provincia-matutina-meaning" }}
-        {{> white-box playName="Vespertina" playTime="17:30 hs" numberId="provincia-vespertina-number" meaningId="provincia-vespertina-meaning" }}
-        {{> white-box playName="Nocturna" playTime="21:00 hs" numberId="provincia-nocturna-number" meaningId="provincia-nocturna-meaning" }}
+        {{> white-box playName="La Primera" numberSelector="js-laPrimera-number" meaningSelector="js-laPrimera-meaning" boxSelector="js-laPrimera-box"}}
+        {{> white-box playName="Matutina" numberSelector="js-matutina-number" meaningSelector="js-matutina-meaning" boxSelector="js-matutina-box"}}
+        {{> white-box playName="Vespertina" numberSelector="js-vespertina-number" meaningSelector="js-vespertina-meaning" boxSelector="js-vespertina-box"}}
+        {{> white-box playName="Nocturna" numberSelector="js-nocturna-number" meaningSelector="js-nocturna-meaning" boxSelector="js-nocturna-box"}}
     </div>
 </div>
