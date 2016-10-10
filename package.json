@@ -48,7 +48,7 @@
     "node-schedule": "^1.1.0",
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
-    "quiniela-results": "^4.0.1",
+    "quiniela-results": "^5.0.0",
     "request": "^2.69.0",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5",
