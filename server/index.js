@@ -1,4 +1,4 @@
-import { initSchedule } from './lib/check-results'
+// import { initSchedule } from './lib/check-results'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
@@ -93,5 +93,5 @@ mongoose.connection.on('error', (error) => {
 mongoose.connection.on('connected', () => {
   server.listen(port, () => console.log(`http://localhost:${port}`))
   realtime(server, session)
-  initSchedule()
+  // initSchedule()
 })

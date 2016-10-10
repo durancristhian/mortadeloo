@@ -4,37 +4,46 @@ import { api } from './api'
 import { initToggles } from './toggles'
 
 api('results', (error, results) => {
-  $('#loading').addClass('dn')
+  setTimeout(() => {
+    $('#loading').addClass('dn')
 
-  if (error) {
-    return notificate.error(error.message)
-  }
+    if (error) {
+      return notificate.error(error.message)
+    }
 
-  // $('#nacional-primera-meaning').html(results.nacional.laPrimera.meaning)
-  $('#nacional-primera-number').html(results.nacional.laPrimera.number)
+    const invalidResultNacional = isNaN(results.Nacional.laPrimera.number)
+    const invalidResultProvincia = isNaN(results.Provincia.laPrimera.number)
 
-  // $('#nacional-matutina-meaning').html(results.nacional.matutina.meaning)
-  $('#nacional-matutina-number').html(results.nacional.matutina.number)
+    if (invalidResultNacional || invalidResultProvincia) {
+      $('#no-results').removeClass('dn')
+    } else {
+      $('#nacional-primera-meaning').html(results.Nacional.laPrimera.meaning)
+      $('#nacional-primera-number').html(results.Nacional.laPrimera.number)
 
-  // $('#nacional-vespertina-meaning').html(results.nacional.vespertina.meaning)
-  $('#nacional-vespertina-number').html(results.nacional.vespertina.number)
+      $('#nacional-matutina-meaning').html(results.Nacional.matutina.meaning)
+      $('#nacional-matutina-number').html(results.Nacional.matutina.number)
 
-  // $('#nacional-nocturna-meaning').html(results.nacional.nocturna.meaning)
-  $('#nacional-nocturna-number').html(results.nacional.nocturna.number)
+      $('#nacional-vespertina-meaning').html(results.Nacional.vespertina.meaning)
+      $('#nacional-vespertina-number').html(results.Nacional.vespertina.number)
 
-  // $('#provincia-primera-meaning').html(results.provincia.laPrimera.meaning)
-  $('#provincia-primera-number').html(results.provincia.laPrimera.number)
+      $('#nacional-nocturna-meaning').html(results.Nacional.nocturna.meaning)
+      $('#nacional-nocturna-number').html(results.Nacional.nocturna.number)
 
-  // $('#provincia-matutina-meaning').html(results.provincia.matutina.meaning)
-  $('#provincia-matutina-number').html(results.provincia.matutina.number)
+      $('#provincia-primera-meaning').html(results.Provincia.laPrimera.meaning)
+      $('#provincia-primera-number').html(results.Provincia.laPrimera.number)
 
-  // $('#provincia-vespertina-meaning').html(results.provincia.vespertina.meaning)
-  $('#provincia-vespertina-number').html(results.provincia.vespertina.number)
+      $('#provincia-matutina-meaning').html(results.Provincia.matutina.meaning)
+      $('#provincia-matutina-number').html(results.Provincia.matutina.number)
 
-  // $('#provincia-nocturna-meaning').html(results.provincia.nocturna.meaning)
-  $('#provincia-nocturna-number').html(results.provincia.nocturna.number)
+      $('#provincia-vespertina-meaning').html(results.Provincia.vespertina.meaning)
+      $('#provincia-vespertina-number').html(results.Provincia.vespertina.number)
 
-  $('#results').removeClass('dn')
+      $('#provincia-nocturna-meaning').html(results.Provincia.nocturna.meaning)
+      $('#provincia-nocturna-number').html(results.Provincia.nocturna.number)
+
+      $('#results').removeClass('dn')
+    }
+  }, 3000)
 })
 
 initToggles('#toggles')

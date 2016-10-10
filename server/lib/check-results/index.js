@@ -1,5 +1,5 @@
 import async from 'async'
-import { getResults } from '../get-results'
+import quinielaResults from 'quiniela-results'
 import schedule from 'node-schedule'
 import Twitter from 'twitter'
 import User from '../../models/user'
@@ -18,7 +18,7 @@ function buildTweetMetadata (users, playType, numberToFind) {
 
 function collectData (callback) {
   async.parallel([
-    getResults,
+    quinielaResults,
     function (callback) {
       User
         .find({})

@@ -21,8 +21,8 @@ export function getClassIfActive (numbers, number) {
   return numbers.indexOf(number) !== -1 ? 'toggle-active' : ''
 }
 
-export function getDream (data, number) {
-  return data.dreams[number]
+export function getDream (dreams, number) {
+  return dreams[number]
 }
 
 export function pad (number) {
