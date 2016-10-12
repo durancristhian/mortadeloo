@@ -12,10 +12,6 @@
   }
 }
 
-.shadow-6 {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-
 .spinner {
   text-align: center;
 }
@@ -49,10 +45,10 @@
 }
 
 .toggle::after {
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 5px;
   bottom: 5px;
-  box-shadow: inset 0 -0.2em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -0.2em 0 rgba(0, 0, 0, .2);
   content: " ";
   left: 5px;
   position: absolute;
@@ -64,10 +60,10 @@
 }
 
 .toggle::before {
-  background-color: #c33;
+  background-color: #C33;
   border-radius: 5px;
   bottom: 0;
-  box-shadow: inset 0 0.2em 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0.2em 0 rgba(0, 0, 0, .3);
   content: " ";
   display: block;
   left: 0;

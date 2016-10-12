@@ -9,7 +9,7 @@ export function showResults () {
     }
 
     let originalPlayResultsTemplate = $('#play-results-template')
-    let $results = $('#results')
+    let $resultsTable = $('#results-table')
 
     for (const property in results) {
       if (results.hasOwnProperty(property)) {
@@ -25,35 +25,35 @@ export function showResults () {
           template.find('.js-laPrimera-number').html(play.laPrimera.number)
           template.find('.js-laPrimera-meaning').html(play.laPrimera.meaning)
         } else {
-          template.find('.js-laPrimera-box').addClass('o-50')
+          template.find('.js-laPrimera-box').addClass('o-30')
         }
 
         if (!isNaN(parseInt(play.matutina.number))) {
           template.find('.js-matutina-number').html(play.matutina.number)
           template.find('.js-matutina-meaning').html(play.matutina.meaning)
         } else {
-          template.find('.js-matutina-box').addClass('o-50')
+          template.find('.js-matutina-box').addClass('o-30')
         }
 
         if (!isNaN(parseInt(play.vespertina.number))) {
           template.find('.js-vespertina-number').html(play.vespertina.number)
           template.find('.js-vespertina-meaning').html(play.vespertina.meaning)
         } else {
-          template.find('.js-vespertina-box').addClass('o-50')
+          template.find('.js-vespertina-box').addClass('o-30')
         }
 
         if (!isNaN(parseInt(play.nocturna.number))) {
           template.find('.js-nocturna-number').html(play.nocturna.number)
           template.find('.js-nocturna-meaning').html(play.nocturna.meaning)
         } else {
-          template.find('.js-nocturna-box').addClass('o-50')
+          template.find('.js-nocturna-box').addClass('o-30')
         }
 
-        $results.append(template)
+        $resultsTable.append(template)
       }
     }
 
     $('#loading').addClass('dn')
-    $results.removeClass('dn')
+    $('#results').removeClass('dn')
   })
 }

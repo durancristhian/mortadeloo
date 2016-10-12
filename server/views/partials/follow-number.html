@@ -1,11 +1,11 @@
 <div class="fl w-50 w-25-l">
-    <div class="mt4">
-        <div class="tc">
-            <p class="b f5 ma0 silver truncate ttu">{{getDream @root.dreams number}}</p>
-            <div>
-                <p class="b b--black-10 ba bg-white black dib f3 mv2 pv3 shadow-6 w4">{{pad number}}</p>
-            </div>
-            <a href="#!" class="toggle js-toggle {{getClassIfActive @root.user.numbers number}}" data-number="{{number}}">Seguir</a>
-        </div>
+  <div class="mt4">
+    <div class="tc">
+      <p class="b f5 ma0 silver truncate ttu">{{getDream @root.dreams number}}</p>
+      <div>
+        <p class="b b--black-10 ba bg-white black dib f3 mv2 pv3 w4">{{pad number}}</p>
+      </div>
+      <a href="#!" class="toggle js-toggle {{getClassIfActive @root.user.numbers number}}" data-number="{{number}}">Seguir</a>
     </div>
+  </div>
 </div>
