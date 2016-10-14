@@ -1,5 +1,9 @@
 @import "tachyons";
 
+.min-w6 {
+  min-width: 6rem;
+}
+
 @keyframes bounce {
   0%,
   80%,
