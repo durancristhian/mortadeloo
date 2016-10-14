@@ -27,7 +27,7 @@ import * as handlebarsHelpers from './lib/handlebars-helpers'
 
 const handlebars = expressHandlebars.create({
   extname: 'html',
-  defaultLayout: 'main-v2',
+  defaultLayout: 'main',
   helpers: handlebarsHelpers,
   layoutsDir: path.join(__dirname, 'views', 'layouts'),
   partialsDir: path.join(__dirname, 'views', 'partials')

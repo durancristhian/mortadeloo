@@ -1,15 +1,17 @@
-<div class="center mw8-l ph3 pv5">
-  <div class="cf">
-    <div class="fl-l w-30-l">
-      {{> user-profile}}
-    </div>
-    <div class="fl-l w-70-l">
-      <div class="pl4-l">
-        {{> spinner}}
-        {{> results}}
-      </div>
-    </div>
+<div class="bg-white-50 ph3 pv5">
+  <div class="center mw8-l">
+    {{> user-profile}}
   </div>
-  {{> suscriptions}}
+</div>
+<div class="b--black-10 bb bg-white-50 ph3 pb5">
+  <div class="center mw8-l">
+    {{> suscriptions}}
+  </div>
+</div>
+<div class="ph3 pv5">
+  <div class="center mw8-l">
+    {{> spinner}}
+    {{> results}}
+  </div>
 </div>
 {{> notifications}}
