@@ -1,5 +1,7 @@
 # mortadeloo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/durancristhian/mortadeloo.svg)](https://greenkeeper.io/)
+
 :1234: mortadeloo es una aplicación para estar atento a los números de la quiniela en Argentina
 
 Disponible [en este enlace](http://mortadeloo.herokuapp.com)
