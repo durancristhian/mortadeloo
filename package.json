@@ -17,6 +17,7 @@
     "prebuild-css": "rm -rf public/css/* && copyfiles -u 1 client/css/main.css public",
     "prebuild-images": "rm -rf public/img/*",
     "prebuild-js": "rm -rf public/js/* && copyfiles -u 1 client/js/app.js public",
+    "prepush": "npm run check-vulnerable-dependencies && npm run dependency-check && npm run lint && npm run build",
     "start": "babel-node server",
     "start-dev": "npm run watch-client & npm run watch-server",
     "watch-client": "npm run watch-css & npm run watch-js",
@@ -45,13 +46,13 @@
     "cz-conventional-changelog": "^1.2.0",
     "dependency-check": "^2.6.0",
     "dotenv": "^2.0.0",
+    "exorcist": "^0.4.0",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
     "express-socket.io-session": "^1.3.1",
-    "exorcist": "^0.4.0",
-    "ghooks": "^1.0.3",
     "helmet": "^2.2.0",
+    "husky": "^0.12.0",
     "jquery": "^3.1.0",
     "moment": "^2.12.0",
     "mongoose": "^4.4.10",
@@ -79,9 +80,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "npm run check-vulnerable-dependencies && npm run dependency-check && npm run lint && npm run build"
     }
   },
   "repository": {
