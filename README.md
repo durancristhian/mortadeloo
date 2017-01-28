@@ -17,13 +17,6 @@ npm i
 npm run start-dev
 ```
 
-## Screenshots
-
-> Because we all love the screenshots
-
-![mortadeloo-1](https://raw.githubusercontent.com/durancristhian/mortadeloo/master/screenshots/mortadeloo-1.png)
-![mortadeloo-2](https://raw.githubusercontent.com/durancristhian/mortadeloo/master/screenshots/mortadeloo-2.png)
-
 ## Contributing
 
 No restriction at all. Feel free to contribute with whatever you want.
