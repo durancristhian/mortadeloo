@@ -20,6 +20,7 @@
     "prepush": "npm run check-vulnerable-dependencies && npm run dependency-check && npm run lint && npm run build",
     "start": "babel-node server",
     "start-dev": "npm run watch-client & npm run watch-server",
+    "stats": "babel-node server/lib/stats",
     "watch-client": "npm run watch-css & npm run watch-js",
     "watch-css": "onchange 'client/css/**/*.css' -v -- npm run build-css",
     "watch-js": "onchange 'client/js/**/*.js' -v -- npm run build-js",
@@ -71,13 +72,11 @@
     "snazzy": "^6.0.0",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5",
+    "standard": "^8.1.0",
     "stylelint": "^7.2.0",
     "stylelint-config-standard": "^15.0.0",
     "tachyons": "^4.5.2",
     "twitter": "^1.2.5"
-  },
-  "devDependencies": {
-    "standard": "^8.1.0"
   },
   "config": {
     "commitizen": {
