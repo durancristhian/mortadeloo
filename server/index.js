@@ -14,7 +14,7 @@ import realtime from './realtime'
 
 if (!process.env.NODE_ENV) {
   dotenv.load({
-    path: '.env-local',
+    path: '.env',
     silent: true
   })
 }

@@ -1,4 +1,5 @@
 import async from 'async'
+import moment from 'moment'
 import quinielaResults from 'quiniela-results'
 import schedule from 'node-schedule'
 import Twitter from 'twitter'
@@ -18,8 +19,12 @@ function buildTweetMetadata (users, playType, numberToFind) {
 
 function collectData (callback) {
   async.parallel([
-    quinielaResults,
-    function (callback) {
+    function (cb) {
+      quinielaResults(moment().format('YYYY-MM-DD'))
+        .then(results => cb(null, results))
+        .catch(cb)
+    },
+    function (cb) {
       User
         .find({})
         .select({
@@ -29,10 +34,10 @@ function collectData (callback) {
         })
         .exec((error, users) => {
           if (error) {
-            return callback(error)
+            return cb(error)
           }
 
-          return callback(null, users)
+          return cb(null, users)
         })
     }
   ], callback)
@@ -46,10 +51,12 @@ function formatData (playName, callback) {
 
     const [ numbers, users ] = results
 
-    const nacionalPlayNumber = parseInt(numbers.nacional[playName].substring(2))
+    const nacionalPlayNumberAsString = numbers.nacional[playName].number.toString()
+    const nacionalPlayNumber = parseInt(nacionalPlayNumberAsString.substring(nacionalPlayNumberAsString.length - 2))
     const nacionalPlayTweets = buildTweetMetadata(users, 'nacional', nacionalPlayNumber)
 
-    const provinciaPlayNumber = parseInt(numbers.provincia[playName].substring(2))
+    const provinciaPlayNumberAsString = numbers.provincia[playName].number.toString()
+    const provinciaPlayNumber = parseInt(provinciaPlayNumberAsString.substring(provinciaPlayNumberAsString.length - 2))
     const provinciaPlayTweets = buildTweetMetadata(users, 'provincia', provinciaPlayNumber)
 
     const tweetsMetadata = nacionalPlayTweets.concat(provinciaPlayTweets)
