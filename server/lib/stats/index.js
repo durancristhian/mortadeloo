@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const resultsPath = path.join('server', 'resources', 'results-from-01-01-2006-to-27-01-2017.json')
+const resultsPath = path.join('server', 'resources', 'results-from-2006-01-01-to-2017-07-16.json')
 const resultsJSON = fs.readFileSync(resultsPath, 'utf8')
 const results = JSON.parse(resultsJSON)
 

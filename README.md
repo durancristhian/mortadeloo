@@ -2,7 +2,7 @@
 
 :1234: mortadeloo es una aplicación para estar atento a los números de la quiniela en Argentina
 
-Disponible [en este enlace](http://mortadeloo.herokuapp.com)
+Disponible [en este enlace]()
 
 ## Como funciona?
 
@@ -12,7 +12,7 @@ Disponible [en este enlace](http://mortadeloo.herokuapp.com)
 
 ## Desarrollo
 
-```
+```bash
 npm i
 npm run start-dev
 ```
